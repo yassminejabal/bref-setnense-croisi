@@ -65,22 +65,26 @@ form.addEventListener("submit", (e) => {
         experiencesvalue,
         localisationvalue
     });
-
-    console.log(unassignedEmployees);
     form.reset();
     form.style.display = "none";
-    
     renderSidebar();
     
 });
 
 function renderSidebar(){
-   const sidebar = document.getElementById("sidebar");
-    unassignedEmployees.forEach((card,index)=>{
-            const carde = document.createElement("div");
-            carde.classList.add("card");
-                    carde.innerHTML=`
 
+   const sidebar = document.getElementById("sidebar");
+    document.querySelectorAll(".card").forEach(ev=>ev.remove());
+
+
+    unassignedEmployees.forEach((card,index)=>{
+        console.log(22222);
+        console.log(index);
+        const carde = document.createElement("div");
+        carde.classList.add("card");
+        carde.setAttribute("id",index)
+        carde.innerHTML=`
+            <img onclick="deleteCarde(${index})" class="img-delete" src="/img/delete.png" alt="phtos"></img>
             <img src="https://avatar.iran.liara.run/public/99" alt="photo">
             <h2>${card.nomPrenomvalue}</h2>
             <p>${card.emailvalue}</p>
@@ -92,38 +96,42 @@ function renderSidebar(){
             </ul>
             <button onclick="modal(${(index)})"">click</button>
     `
+    console.log("enter");
+    
     sidebar.appendChild(carde);
     }
 )
 }
-
-
-
-// function modal(index){
-//     // const btnd = document.getElementById("btnb");
+function deleteCarde(index){
+    if (unassignedEmployees.length>index) {
+        unassignedEmployees.splice(index,1);
+        renderSidebar();
+    }
+}
+function modal(index){
+    const divModal = document.createElement("div");
+    divModal.classList.add("divModal");
+    console.log(index);
+    console.log(unassignedEmployees);
+    unassignedEmployees.forEach((card)=>{
+    divModal.innerHTML=`
     
-//     const nomPrenomvalue = nomprenom.value.trim();
-//     const emailvalue = email.value.trim();
-//     const rolevalue = role.value.trim();
-//     const telephonevalue = telephone.value.trim();
-//     const experiencesvalue = experiences.value.trim();
-//     const localisationvalue = localisation.value.trim();
-//     unassignedEmployees.forEach((card)=>
-//                     card[index].innerHTML=`
-//             <img src="https://avatar.iran.liara.run/public/99" alt="Photo">
+            <img src="https://avatar.iran.liara.run/public/99" alt="photo">
+            <h2>${card[index].nomPrenomvalue}</h2>
+                    console.log(nom);
 
-
-//             <h2>${nomPrenomvalue}</h2>
-//             <p>${emailvalue}</p>
-//             <p>${rolevalue}</p>
-//             <p>${telephonevalue}</p>
-//             <h3>${experiencesvalue}</h3>
-//             <ul>
-//                 <li>${localisationvalue}</li>
-
-//             </ul>`
-
-// )}
+            <p>${card[index].emailvalue}</p>
+                    console.log(email);
+            <p>${card[index].rolevalue}</p>
+            console.log(role)
+            <p>${card[index].telephonevalue}</p>
+            <h3>${card[index].experiencesvalue}</h3>
+            <ul>
+                <li>${card[index].localisationvalue}</li>
+            </ul>
+    `
+        })
+}
 
 
 
@@ -171,7 +179,30 @@ function renderSidebar(){
 
 
 
+    // const btnd = document.getElementById("btnb");
+    
+//     const nomPrenomvalue = nomprenom.value.trim();
+//     const emailvalue = email.value.trim();
+//     const rolevalue = role.value.trim();
+//     const telephonevalue = telephone.value.trim();
+//     const experiencesvalue = experiences.value.trim();
+//     const localisationvalue = localisation.value.trim();
+//     unassignedEmployees.forEach((card)=>
+//                     card[index].innerHTML=`
+//             <img src="https://avatar.iran.liara.run/public/99" alt="Photo">
 
+
+//             <h2>${nomPrenomvalue}</h2>
+//             <p>${emailvalue}</p>
+//             <p>${rolevalue}</p>
+//             <p>${telephonevalue}</p>
+//             <h3>${experiencesvalue}</h3>
+//             <ul>
+//                 <li>${localisationvalue}</li>
+
+//             </ul>`
+
+// )
 
 
 
