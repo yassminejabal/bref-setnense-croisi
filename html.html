@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSphere - Gestion du personnel</title>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+
+<body>
+    <div class="containerprincipal">
+        <!-- #########################sidebar################################# -->
+
+        <button class="btn" onclick="affchesidbar()" id="btn">|||</button>
+        <div class="sidebar" id="sidebar">
+
+            <h2>Personnel non affecté</h2>
+
+
+
+            <!-- <div class="card" id="card">
+                <div class="btns">
+                <button class="removeBtn">✖</button>
+                <button class="addBtn">＋</button>
+            </div>
+
+            <img src="https://avatar.iran.liara.run/public/99" alt="Photo">
+
+            <h2></h2>
+            <p></p>
+            <p></p>
+            <p></p>
+
+            <h3></h3>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+            
+
+            <p></p>
+            </div> -->
+                     <div class="btn-add-worker" id="btnaddworker">
+                <button id="btnaddworkerBtn">Add New Worker</button>
+            </div>
+           
+
+        </div>
+
+
+        <div class="container" style="width:100%;height: 100vh;">
+            <div class="zone-1" id="conference">
+                <button class="button">+</button>
+                <div class="card-1">
+                    <div class="ptite-card">
+                        <img src="https://avatar.iran.liara.run/public" alt="">
+                        <p>yassmine jabal</p>
+                        <p>staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="zone-2" id="reception">
+                <button class="button">+</button>
+                <div class="card-2">
+                    <div class="ptite-card">
+                        <img src="https://avatar.iran.liara.run/public/boy" alt="">
+                        <p>yassmine jabal</p>
+                        <p>staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="zone-3" id="servers">
+                <button class="button">+</button>
+                <div class="card-3">
+                    <div class="ptite-card">
+                        <img src="https://avatar.iran.liara.run/public/girl" alt="">
+                        <p>yassmine jabal</p>
+                        <p>staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="zone-4" id="security">
+                <button class="button">+</button>
+                <div class="card-4">
+                    <div class="ptite-card">
+                        <img src="https://avatar.iran.liara.run/username?username=Scott+Wilson" alt="">
+                        <p>yassmine jabal</p>
+                        <p>staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="zone-5" id="staff">
+                <button class="button">+</button>
+                <div class="card-5">
+                    <div class="ptite-card">
+                        <img src="https://avatar.iran.liara.run/public" alt="">
+                        <p>yassmine jabal</p>
+                        <p>staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="zone-6" id="archives">
+                <button class="button">+</button>
+                <div class="card-6">
+                    <div class="ptite-card">
+                        <img src="https://avatar.iran.liara.run/public" alt="">
+                        <p>yassmine jabal</p>
+                        <p>staff</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gap-1"></div>
+            <div class="gap-2"></div>
+        </div>
+
+        <div class="formulaire" id="formulaire">
+            <form class="form" id="form">
+                <div class="inputlabel">
+                    <h2 class="title">entre les information</h2>
+                    <div class="input-label">
+                        <label for="nom-prenom" class="form-label">Nom-Prenom :</label>
+                        <input type="text" class="input" id="input-Nom-Prenom" placeholder="Nom-Prenom" required>
+
+                    </div>
+                    <div class="input-label">
+                        <label for="Email" class="form-label">Email :</label>
+                        <input type="text" class="input" id="input-Email" placeholder="Email" required>
+
+                    </div>
+                    <div class="input-label">
+                        <label for="Role" class="form-label">Role :</label>
+                        <input type="text" class="input" id="input-Role" placeholder="Voter Role" required>
+
+                    </div>
+                    <div class="input-label">
+                        <label for="telephone" class="form-label">telephne :</label>
+                        <input type="tel" class="input" id="input-telephone" placeholder="telephone" required>
+
+                    </div>
+                    <div class="input-label">
+                        <label for="Expériences" class="form-label">Expériences :</label>
+                        <input type="text" class="input" id="input-Expériences" placeholder="Votre expériences"
+                            required>
+
+                    </div>
+
+                    <div class="input-label">
+                        <label for="loc" class="form-label">Localisation :</label>
+                        <select id="loc" class="input">
+                            <option value="">Choisir une localisation</option>
+                            <option value="conference">Salle de conférence</option>
+                            <option value="reception">Réception</option>
+                            <option value="servers">Salle des serveurs</option>
+                            <option value="security">Salle de sécurité</option>
+                            <option value="staff">Salle du staff</option>
+                            <option value="archives">Salle d'archives</option>
+                        </select>
+                    </div>
+
+                    <input type="submit" class="input-button" id="input-button" value="Ajouter">
+                </div>
+
+
+
+            </form>
+        </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="javascript.js"></script>
+</body>
+
+</html>
+
+
+<!-- <div class="floor-plan">
+  <div class="zone" id="conference">Salle de conférence</div>
+  <div class="zone" id="reception">Réception</div>
+  <div class="zone" id="servers">Salle des serveurs</div>
+  <div class="zone" id="security">Salle de sécurité</div>
+  <div class="zone" id="staff">Salle du personnel</div>
+  <div class="zone" id="archives">Salle d’archives</div>
+</div> -->
