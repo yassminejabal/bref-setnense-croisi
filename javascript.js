@@ -1,4 +1,4 @@
-let unassignedEmployees = [];
+let unassignedEmployees = [] 
 const form = document.getElementById("form");
 const inputbutton = document.getElementById("input-button");
 const btnAddWorkerBtn = document.getElementById("btnaddworkerBtn");
