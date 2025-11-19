@@ -14,20 +14,18 @@ const localisation = document.getElementById("loc");
 btnAddWorkerBtn.addEventListener("click", () => {
     form.style.display = "block";
 });
-
 function affchesidbar() {
     sidebar.classList.toggle("active");
-    document.body.classList.toggle('sidebar-open');
 }
 
-
+let objId = JSON.parse(localStorage.getItem('objId')) || 0;
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const nomregix = /^[^\d]+$/;
     const emailregix = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const roleregix = /^[^\d]+$/;
-    const telregix = /^\+?\d{8,15}$/;
+    const telregix = /^\+?\d{8,15}$/; 
 
     const nomPrenomvalue = nomprenom.value.trim();
     const emailvalue = email.value.trim();
@@ -58,28 +56,28 @@ form.addEventListener("submit", (e) => {
     }
 
     unassignedEmployees.push({
-         nomPrenomvalue,
-         emailvalue,
+        id: objId,
+        nomPrenomvalue,
+        emailvalue,
         rolevalue,
         telephonevalue,
         experiencesvalue,
         localisationvalue
     });
+    objId++;
+
+    localStorage.setItem('objId', JSON.stringify(objId));
     form.reset();
     form.style.display = "none";
     renderSidebar();
-    
+
 });
 
 function renderSidebar(){
-
    const sidebar = document.getElementById("sidebar");
     document.querySelectorAll(".card").forEach(ev=>ev.remove());
-
-
+    
     unassignedEmployees.forEach((card,index)=>{
-        console.log(22222);
-        console.log(index);
         const carde = document.createElement("div");
         carde.classList.add("card");
         carde.setAttribute("id",index)
@@ -94,7 +92,7 @@ function renderSidebar(){
             <ul>
                 <li>${card.localisationvalue}</li>
             </ul>
-            <button onclick="modal(${(index)})"">click</button>
+            <button onclick="modal(${index})">click</button>
     `
     console.log("enter");
     
@@ -108,39 +106,33 @@ function deleteCarde(index){
         renderSidebar();
     }
 }
-function modal(index){
+
+
+function modal(id){
     const divModal = document.createElement("div");
     divModal.classList.add("divModal");
-    console.log(index);
+    console.log(id);
     console.log(unassignedEmployees);
-    unassignedEmployees.forEach((card)=>{
+    unassignedEmployees.forEach((card)=>{  
+        if (card.id === Number(id)){
     divModal.innerHTML=`
-    
-            <img src="https://avatar.iran.liara.run/public/99" alt="photo">
-            <h2>${card[index].nomPrenomvalue}</h2>
-                    console.log(nom);
 
-            <p>${card[index].emailvalue}</p>
+            <img src="https://avatar.iran.liara.run/public/99" alt="photo">
+            <h2>${card.nomPrenomvalue}</h2>                    
+            <p>${card.emailvalue}</p>
                     console.log(email);
-            <p>${card[index].rolevalue}</p>
+            <p>${card.rolevalue}</p>
             console.log(role)
-            <p>${card[index].telephonevalue}</p>
-            <h3>${card[index].experiencesvalue}</h3>
+            <p>${card.telephonevalue}</p>
+            <h3>${card.experiencesvalue}</h3>
             <ul>
-                <li>${card[index].localisationvalue}</li>
+                <li>${card.localisationvalue}</li>
             </ul>
     `
-        })
-}
-
-
-
-
-
-
-
-
-
+        }}
+    )
+    document.body.append(divModal);
+                }
 // function renderSidebar() {
 //     //     const nomPrenomvalue = nomprenom.value.trim();
 //     // const emailvalue = email.value.trim();
