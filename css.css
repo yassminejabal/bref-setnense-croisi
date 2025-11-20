@@ -3,9 +3,12 @@
     margin: 0;
     padding: 0;
 }
+body{
+    height: 100vh;
+}
 
 .sidebar {
-    width: 300px;
+    width: 320px;
     height: 98vh;
     background: rgba(254, 252, 221, 0.98);
     padding: 15px;
@@ -47,17 +50,15 @@
 }
 
 .card {
-    width: 200px;
-    padding: 12px;
+    width: 248px;
     border-radius: 8px;
     border: 1px solid #e5e5e5;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 6px;
-    position: relative;
+    justify-content: space-evenly;
     background-color: antiquewhite;
-        margin-top: 41px;
+    margin-top: 41px;
 }
 
 .btns {
@@ -79,8 +80,8 @@
 }
 
 img {
-    width: 110px;
-    height: 110px;
+    width: 40px;
+    height: 34px;
     border-radius: 50%;
     display: block;
     margin: 0 auto 10px;
@@ -88,6 +89,8 @@ img {
 
 .sidebar h2,p{
     text-align: center;
+    font-size: x-small;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .btn-add-worker {
@@ -134,17 +137,17 @@ img {
 .form {
     box-shadow: 20px 20px antiquewhite;
     width: 390px;
-    height: 80vh;
-    padding: 30px 40px;
+    height:80vh;
     background-color: burlywood;
     border-radius: 20px;
-
+    overflow-y:scroll;
 }
 
 .formulaire {
     position: absolute;
-    bottom: 15%;
+/* bottom: -14%; */
     left: 590px;
+    top: 50px;
 }
 
 .inputlabel {
@@ -162,6 +165,10 @@ img {
 
 .input {
     width: 300px;
+    background-color: beige;
+    border-radius: 9px;
+    height: 36px;
+    color: darkgray;
 }
 
 .input-label {
@@ -446,19 +453,40 @@ img.bg-img {
     box-shadow: #fffbb4 -2px 6px 0px 5px;
     border: none;
 }
-/* .affichmodal{
-
-} */
-#btn-modal affichmodal{
-    display: none;
-}
 #divModal{
     display: none;
 }
-#divModal .affichmodal{
-
-    display: block;
+#formulaire{
+    display: none;
 }
-/* @media 600px {
+.btn-modal{
+    background-color: rgb(54, 199, 100);
+    border-radius: 10px;
+    border:#2e8b57;
+}
+.none-form{
+    background-color: red;
+    width: 60px;
+    border-radius: 60px;
+    border: none;
     
-} */
+}
+.none-form-div{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+}
+#PlusExpe{
+    padding: 3px;
+    border-radius: 10px;
+    border-color: 3px solid #231a2b;
+    background-color: #fffbb4;
+}
+#plusier-experience{
+    /* align-content: center; */
+    text-align: center;
+    display: none;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}

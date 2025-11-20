@@ -12,7 +12,7 @@
 <body>
     <div class="containerprincipal">
         <!-- #########################sidebar################################# -->
-
+        
         <button class="btn" onclick="affchesidbar()" id="btn">|||</button>
         <div class="sidebar" id="sidebar">
                      <div class="btn-add-worker" id="btnaddworker">
@@ -88,7 +88,9 @@
 
         <div class="formulaire" id="formulaire">
             <form class="form" id="form">
-                <button class="none-form" id="none-form">X</button>
+                <div class="none-form-div">
+                <button type="button" class="none-form" id="none-form">X</button>
+                </div>
                 <div class="inputlabel">
                     <h2 class="title">entre les information</h2>
                     <div class="input-label">
@@ -111,6 +113,11 @@
                         <input type="tel" class="input" id="input-telephone" placeholder="telephone" required>
 
                     </div>
+                    <div class="input-label">
+                        <label class="form-label" for="url">URL-Image : </label>
+                        <input type="url" id="input-url" class="input" placeholder="Votre url" required>
+                        <img id="img-url" src="" alt=""></img>
+                    </div>
                     <!-- <div class="input-label">
                         <label for="Expériences" class="form-label">Expériences :</label>
                         <input type="text" class="input" id="input-Expériences" placeholder="Votre expériences"
@@ -130,7 +137,22 @@
                             <option value="archives">Salle d'archives</option>
                         </select>
                     </div>
-                    <div></div>
+
+                    <div id="plusier-experience">
+                        <!-- <label for="company">Company :</label>
+                        <input type="text" id="company" name="company" placeholder="Company"><br>
+                        <label for="experience-start-date">Start :</label>
+                        <input type="date" id="experience-start-date" name="experience-start-date"><br>
+                        <label for="experience-end-date">End :</label><br>
+                        <input type="date" id="experience-end-date" name="experience-end-date"><br> -->
+
+                    </div><br>
+                    <div class="input-label">
+                        <button type="button" class ="btn-experience" onclick="experionce()"  class="input" id="input-label-btn">plus experience</button><br><br>
+                        </div>
+                     </div>
+
+
                     <input type="submit" class="input-button" id="input-button" value="Ajouter">
                 </div>
 
@@ -141,20 +163,11 @@
 
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+
     <script src="javascript.js"></script>
 </body>
 
 </html>
 
 
-<!-- <div class="floor-plan">
-  <div class="zone" id="conference">Salle de conférence</div>
-  <div class="zone" id="reception">Réception</div>
-  <div class="zone" id="servers">Salle des serveurs</div>
-  <div class="zone" id="security">Salle de sécurité</div>
-  <div class="zone" id="staff">Salle du personnel</div>
-  <div class="zone" id="archives">Salle d’archives</div>
-</div> -->
+z

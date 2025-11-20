@@ -3,30 +3,51 @@ const form = document.getElementById("form");
 const inputbutton = document.getElementById("input-button");
 const btnAddWorkerBtn = document.getElementById("btnaddworkerBtn");
 const sidebar = document.getElementById("sidebar");
-form.style.display = "none";
 const nomprenom = document.getElementById("input-Nom-Prenom");
 const email = document.getElementById("input-Email");
 const role = document.getElementById("input-Role");
 const telephone = document.getElementById("input-telephone");
 const experiences = document.getElementById("input-Expériences");
 const localisation = document.getElementById("loc");
+const url= document.getElementById("input-url");
+
+
+    const formParente = document.getElementById("formulaire")
 
 btnAddWorkerBtn.addEventListener("click", () => {
-    form.style.display = "block";
+    formParente.style.display = "block";
 });
+    const plusierexperience = document.getElementById("plusier-experience");
+
+function plusierexper() {
+    const btnexperiencee = document.querySelector(".btn-experience");
+    console.log(btnexperiencee);
+    
+    btnexperiencee.addEventListener("click",()=>{
+        plusierexperience.style.display="block";
+    })
+}
+plusierexper()
+function experionce() {
+    // const plusierexperience = document.getElementById("plusier-experience");
+    plusierexperience.innerHTML+=`
+    <label for="company">Company :</label>
+                        <input type="text" id="company" name="company" placeholder="Company"><br>
+                        <label for="experience-start-date">Start :</label>
+                        <input type="date" id="experience-start-date" name="experience-start-date"><br>
+                        <label for="experience-end-date">End :</label><br>
+                        <input type="date" id="experience-end-date" name="experience-end-date"><br>
+
+    `
+}
+    
+
 function affchesidbar() {
     sidebar.classList.toggle("active");
 }
-function modal() {
-    const btnmodal = document.getElementById("btn-modal");
-    btnmodal.addEventListener("click",()=>{
-        divModal.classList.toggle("affichmodal");
-    })
-    
-}
-modal();
 
 let objId = JSON.parse(localStorage.getItem('objId')) || 0;
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -34,6 +55,8 @@ form.addEventListener("submit", (e) => {
     const emailregix = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const roleregix = /^[^\d]+$/;
     const telregix = /^\+?\d{8,15}$/; 
+    const regixurl = /https?:\/\/\S+/g;
+
 
     const nomPrenomvalue = nomprenom.value.trim();
     const emailvalue = email.value.trim();
@@ -58,6 +81,9 @@ form.addEventListener("submit", (e) => {
         alert("Téléphone incorrect");
         return;
     }
+    if (!regixurl.test(url.value)) {
+        alert("url est incorrect");
+    }
     // if (!experiencesvalue) {
     //     alert("Veuillez indiquer les expériences");
     //     return;
@@ -76,19 +102,17 @@ form.addEventListener("submit", (e) => {
 
     localStorage.setItem('objId', JSON.stringify(objId));
     form.reset();
-    form.style.display = "none";
     renderSidebar();
 
 });
- function noneform() {
-    const noneform = document.getElementById("none-form")
-    const form = document.getElementById("formulaire")
-    noneform.addEventListener("click",()=>{
-        form.style.display="none";
-    });
- }
- noneform()
 
+ 
+    const noneform = document.getElementById("none-form")
+    noneform.addEventListener("click",()=>{
+        formParente.style.display="none";
+    });
+ 
+ 
 
 
 function renderSidebar(){
@@ -108,10 +132,7 @@ function renderSidebar(){
             </div>
             <h2>${card.nomPrenomvalue}</h2>
             <p>${card.rolevalue}</p>
-            <ul>
-                <li>${card.localisationvalue}</li>
-            </ul>
-            <button id="btn-modal" onclick="modal(${card.id})">click</button>
+            <button class="btn-modal" onclick="modal(${card.id})">Details</button>
     `
     
     
@@ -119,204 +140,68 @@ function renderSidebar(){
     }
 )
 }
-function deleteCarde(id){
-    console.log("enter");
-    // if (unassignedEmployees.length>id) {
-    //     unassignedEmployees.splice(id,1);
-    //     renderSidebar();
-    // }
-    unassignedEmployees.forEach((person)=>{
-        console.log(person);
-        console.log(person.id);
-        if (person.id===id) {
-            console.log('inside th if');
-            console.log(unassignedEmployees);
+
+// function deleteCarde(id){
+//     unassignedEmployees.forEach((person)=>{
+//         console.log(person);
+//         console.log(person.id);
+//         if (person.id===id) {
+//             console.log('inside th if');
+//             console.log(unassignedEmployees);
             
-        unassignedEmployees= unassignedEmployees.splice(person.id,1);
-        }
-    });
-     renderSidebar();
+//         unassignedEmployees= unassignedEmployees.splice(person.id,1);
+//         }
+//     });
+//      renderSidebar();
 
-}
+// }
 
-function modal(id){
+
+    
+    const btnmodal = document.getElementById("btn-modal");
     const divModal = document.createElement("div");
     divModal.classList.add("divModal");
-    console.log(id);
-    console.log(unassignedEmployees);
+    document.body.append(divModal);
+function modal(id){
     unassignedEmployees.forEach((card)=>{  
         if (card.id === Number(id)){
     divModal.innerHTML=`
             <img src="https://avatar.iran.liara.run/public/99" alt="photo">
-            <h2>Nom-Prenom : ${card.nomPrenomvalue}</h2>                    
+            <h2>Nom-Prenom : ${card.nomPrenomvalue}</h2>            
             <p>Email : ${card.emailvalue}</p>
             <p>Role : ${card.rolevalue}</p>
             <p>Telephone : ${card.telephonevalue}</p>
-
+            <p onclick="closmodal()" class="clos">X</p>
     `
-        }}
-    )
-    document.body.append(divModal);
-                }
-            //                 <h3>le${card.experiencesvalue}</h3>
-            // <ul>
-            //     <li>${card.localisationvalue}</li>
-            // </ul>
+}
+    divModal.style.display="block";
 
+})
 
+}
+function closmodal() {
+    console.log("enter");
+    divModal.style.display="none";
+}
 
 
 
+            function urll() {
+                const inputurl = document.getElementById("input-url");
+                const imgurl = document.getElementById("img-url");
+                inputurl.addEventListener("input",()=>{
+                    
+                    imgurl.src=inputurl.value;
 
-// function renderSidebar() {
-//     //     const nomPrenomvalue = nomprenom.value.trim();
-//     // const emailvalue = email.value.trim();
-//     // const rolevalue = role.value.trim();
-//     // const telephonevalue = telephone.value.trim();
-//     // const experiencesvalue = experiences.value.trim();
-//     // const localisationvalue = localisation.value.trim();
+                })
+                
+            }
 
 
-//     unassignedEmployees.forEach((emp, index) => {
-//         const card = document.createElement("div");
-//         card.className = "card";
-//         card.innerHTML = `
-//             <div class="btns">
-//                 <button class="removeBtn">X</button>
-//             </div>
-//             <img src="https://avatar.iran.liara.run/public" alt="Photo">
-//             <h2>${emp.nomPrenomvalue}</h2>
-//             <p><strong>Rôle:</strong> ${emp.rolevalue}</p>
-//             <p><strong>Email:</strong> ${emp.emailvalue}</p>
-//             <p><strong>Téléphone:</strong> ${emp.telephonevalue}</p>
-//             <h3>Expériences :</h3>
-//             <p>${emp.experiencesvalue}</p>
-//             <p><strong>Localisation:</strong> ${emp.localisationvalue}</p>
-//         `
 
 
-// })
-// }
 
 
-
-
-
-
-
-
-
-    // const btnd = document.getElementById("btnb");
-    
-//     const nomPrenomvalue = nomprenom.value.trim();
-//     const emailvalue = email.value.trim();
-//     const rolevalue = role.value.trim();
-//     const telephonevalue = telephone.value.trim();
-//     const experiencesvalue = experiences.value.trim();
-//     const localisationvalue = localisation.value.trim();
-//     unassignedEmployees.forEach((card)=>
-//                     card[index].innerHTML=`
-//             <img src="https://avatar.iran.liara.run/public/99" alt="Photo">
-
-
-//             <h2>${nomPrenomvalue}</h2>
-//             <p>${emailvalue}</p>
-//             <p>${rolevalue}</p>
-//             <p>${telephonevalue}</p>
-//             <h3>${experiencesvalue}</h3>
-//             <ul>
-//                 <li>${localisationvalue}</li>
-
-//             </ul>`
-
-// )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //     // remove button handler
-    //     card.querySelector('.removeBtn').addEventListener('click', (ev) => {
-    //         const idx = Number(ev.target.getAttribute('data-index'));
-    //         unassignedEmployees.splice(idx, 1);
-    //         renderSidebar();
-    //     });
-
-    //     sidebar.appendChild(card);
-    // });
-
-
-
-
-
-
-
-
-    // if (unassignedEmployees.length === 0) {
-    //     sidebar.innerHTML += `<p>Aucun employé non affecté.</p>`;
-    //     return;
-    // }
-
-
-
-
-
-
-
-
-
-// function modal(index){
-//     
-//     console.log(cardi);
-//     unassignedEmployees.forEach((index)=>{
- 
-    
-//     `
-//     }
-//     document.body.append(cardi);
-
-//     }
-          
-
-
-//    cardi[index].innerHTML=`
-            
-
-//             <img src="https://avatar.iran.liara.run/public/99" alt="Photo">
-
-//             <h2>${cardi[index].nomprenom}</h2>
-//             <p>${cardi[index].emailvalue}</p>
-//             <p>${cardi[index].rolevalue}</p>
-//             <p>${cardi[index].telephonevalue}</p>
-//             <h3>${cardi[index].experiencesvalue}</h3>
-//             <ul>
-//                 <li>${cardi[index].localisationvalue}</li>
-
-//             </ul>
 
 
 
@@ -344,3 +229,9 @@ function modal(id){
 //     ],
 
 // }
+
+
+            //                 <h3>le${card.experiencesvalue}</h3>
+            // <ul>
+            //     <li>${card.localisationvalue}</li>
+            // </ul>
