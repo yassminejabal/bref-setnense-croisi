@@ -1,4 +1,4 @@
-let unassignedEmployees = [] 
+let unassignedEmployees = [];
 const form = document.getElementById("form");
 const inputbutton = document.getElementById("input-button");
 const btnAddWorkerBtn = document.getElementById("btnaddworkerBtn");
@@ -17,6 +17,14 @@ btnAddWorkerBtn.addEventListener("click", () => {
 function affchesidbar() {
     sidebar.classList.toggle("active");
 }
+function modal() {
+    const btnmodal = document.getElementById("btn-modal");
+    btnmodal.addEventListener("click",()=>{
+        divModal.classList.toggle("affichmodal");
+    })
+    
+}
+modal();
 
 let objId = JSON.parse(localStorage.getItem('objId')) || 0;
 form.addEventListener("submit", (e) => {
@@ -29,9 +37,9 @@ form.addEventListener("submit", (e) => {
 
     const nomPrenomvalue = nomprenom.value.trim();
     const emailvalue = email.value.trim();
-    const rolevalue = role.value.trim();
+    // const rolevalue = role.value.trim();
     const telephonevalue = telephone.value.trim();
-    const experiencesvalue = experiences.value.trim();
+    // const experiencesvalue = experiences.value.trim();
     const localisationvalue = localisation.value.trim();
 
     if (!nomregix.test(nomPrenomvalue)) {
@@ -42,26 +50,26 @@ form.addEventListener("submit", (e) => {
         alert("Email incorrect");
         return;
     }
-    if (!roleregix.test(rolevalue)) {
-        alert("Role incorrect");
-        return;
-    }
+    // if (!roleregix.test(rolevalue)) {
+    //     alert("Role incorrect");
+    //     return;
+    // }
     if (telephonevalue && !telregix.test(telephonevalue)) {
         alert("Téléphone incorrect");
         return;
     }
-    if (!experiencesvalue) {
-        alert("Veuillez indiquer les expériences");
-        return;
-    }
+    // if (!experiencesvalue) {
+    //     alert("Veuillez indiquer les expériences");
+    //     return;
+    // }
 
     unassignedEmployees.push({
         id: objId,
         nomPrenomvalue,
         emailvalue,
-        rolevalue,
+        // rolevalue,
         telephonevalue,
-        experiencesvalue,
+        // experiencesvalue,
         localisationvalue
     });
     objId++;
@@ -72,41 +80,64 @@ form.addEventListener("submit", (e) => {
     renderSidebar();
 
 });
+ function noneform() {
+    const noneform = document.getElementById("none-form")
+    const form = document.getElementById("formulaire")
+    noneform.addEventListener("click",()=>{
+        form.style.display="none";
+    });
+ }
+ noneform()
+
+
 
 function renderSidebar(){
    const sidebar = document.getElementById("sidebar");
     document.querySelectorAll(".card").forEach(ev=>ev.remove());
     
-    unassignedEmployees.forEach((card,index)=>{
+    unassignedEmployees.forEach((card)=>{
         const carde = document.createElement("div");
         carde.classList.add("card");
-        carde.setAttribute("id",index)
+        carde.setAttribute("id",card.id);
         carde.innerHTML=`
-            <img onclick="deleteCarde(${index})" class="img-delete" src="/img/delete.png" alt="phtos"></img>
+        <div>
+            <img onclick="deleteCarde(${card.id})" class="img-delete" src="/img/delete.png" alt="phtos"></img>
+            </div>
+            <div>
             <img src="https://avatar.iran.liara.run/public/99" alt="photo">
+            </div>
             <h2>${card.nomPrenomvalue}</h2>
-            <p>${card.emailvalue}</p>
             <p>${card.rolevalue}</p>
-            <p>${card.telephonevalue}</p>
-            <h3>${card.experiencesvalue}</h3>
             <ul>
                 <li>${card.localisationvalue}</li>
             </ul>
-            <button onclick="modal(${index})">click</button>
+            <button id="btn-modal" onclick="modal(${card.id})">click</button>
     `
-    console.log("enter");
+    
     
     sidebar.appendChild(carde);
     }
 )
 }
-function deleteCarde(index){
-    if (unassignedEmployees.length>index) {
-        unassignedEmployees.splice(index,1);
-        renderSidebar();
-    }
-}
+function deleteCarde(id){
+    console.log("enter");
+    // if (unassignedEmployees.length>id) {
+    //     unassignedEmployees.splice(id,1);
+    //     renderSidebar();
+    // }
+    unassignedEmployees.forEach((person)=>{
+        console.log(person);
+        console.log(person.id);
+        if (person.id===id) {
+            console.log('inside th if');
+            console.log(unassignedEmployees);
+            
+        unassignedEmployees= unassignedEmployees.splice(person.id,1);
+        }
+    });
+     renderSidebar();
 
+}
 
 function modal(id){
     const divModal = document.createElement("div");
@@ -116,23 +147,27 @@ function modal(id){
     unassignedEmployees.forEach((card)=>{  
         if (card.id === Number(id)){
     divModal.innerHTML=`
-
             <img src="https://avatar.iran.liara.run/public/99" alt="photo">
-            <h2>${card.nomPrenomvalue}</h2>                    
-            <p>${card.emailvalue}</p>
-                    console.log(email);
-            <p>${card.rolevalue}</p>
-            console.log(role)
-            <p>${card.telephonevalue}</p>
-            <h3>${card.experiencesvalue}</h3>
-            <ul>
-                <li>${card.localisationvalue}</li>
-            </ul>
+            <h2>Nom-Prenom : ${card.nomPrenomvalue}</h2>                    
+            <p>Email : ${card.emailvalue}</p>
+            <p>Role : ${card.rolevalue}</p>
+            <p>Telephone : ${card.telephonevalue}</p>
+
     `
         }}
     )
     document.body.append(divModal);
                 }
+            //                 <h3>le${card.experiencesvalue}</h3>
+            // <ul>
+            //     <li>${card.localisationvalue}</li>
+            // </ul>
+
+
+
+
+
+
 // function renderSidebar() {
 //     //     const nomPrenomvalue = nomprenom.value.trim();
 //     // const emailvalue = email.value.trim();
