@@ -8,7 +8,7 @@ body{
 }
 
 .sidebar {
-    width: 320px;
+    width: 353px;
     height: 98vh;
     background: rgba(254, 252, 221, 0.98);
     padding: 15px;
@@ -80,13 +80,12 @@ body{
 }
 
 img {
-    width: 40px;
-    height: 34px;
+    width: 61px;
+    height: 53px;
     border-radius: 50%;
     display: block;
     margin: 0 auto 10px;
 }
-
 .sidebar h2,p{
     text-align: center;
     font-size: x-small;
@@ -231,6 +230,7 @@ img.bg-img {
 }
 
 .container {
+    position: relative;
     display: grid;
     width: 100%;
     grid-template-areas:
@@ -440,7 +440,14 @@ img.bg-img {
 }
 .divModal h2{
     font-family: 'Courier New', Courier, monospace;
+    font-size:initial;
+    text-align: center;
+}
+.clos{
     font-size: x-large;
+color: red;
+width: 10px;
+height: 4px;
 }
 .divModal p{
     font-family: 'Courier New', Courier, monospace;
@@ -489,4 +496,51 @@ img.bg-img {
     /* display: flex; */
     /* flex-direction: column; */
     /* justify-content: center; */
+}
+
+.div-modal{
+        background-color: #951212;
+            top: -463px;
+    left: 143px;
+}
+.card-modal-rom{
+    background-color: aliceblue;
+    width: 80%;
+    height: 20px;
+}
+.card-modal-rom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+width: 57%;
+    height: 79px;
+    background-color: #951212;
+}
+.modal-romm{
+        width: 500px;
+    height: 400px;
+    position: absolute;
+    background-color: #ffec3e;
+    display: none;
+    left: 570px;
+    top: 130px;
+    overflow-y: scroll;
+}
+
+
+
+
+
+ .card-modal-rom {
+    margin-left: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 71%;
+    height: fit-content;
+    background-color: #818a3b;
+    border-radius: 18px;
+    border: #231a2b 3px solid;
 }
