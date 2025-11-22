@@ -129,7 +129,7 @@ form.addEventListener("submit", (e) => {
         alert("non select!!");
         return;
     }
-    
+
     const experience =experionce() ;
     unassignedEmployees.push({
         id: objId,
@@ -235,71 +235,53 @@ function imgurl() {
 }
 imgurl()
 
-
-// function roomUn() {
-//     const btn = document.getElementById("btn-1");
-//     btn.addEventListener("click",afficherModalCarde1)
-// }
-
-
-// function afficherModalCarde1() {
-//     const divmodal = document.getElementById("div-modal")
-//     const sale1 = document.getElementById("conference");
-
-//     unassignedEmployees.forEach((persone)=>{
-//         if(persone.selectrolvalue ===sale1.textContent){
-//             const modalromm = document.getElementById("modal-romm");
-//             modalromm.innerHTML+=`
-//             <div class = "card-1">
-//         <img src="${persone.urlvalue}" alt="photo">
-//        </div>
-//        <h2>${persone.nomPrenomvalue}</h2>
-//       <p>${persone.selectrolvalue}</p>
-//             `
-//         }
-     
-//     })
-//    divmodal.append(modalromm)
-// }
-// roomUn()
+let movedEmployeesModal = [];
+//closeat=>ax kadir =>katmxi l awal parent 3ndo dak l class li 3titiha const div = btn.closest(".grandparent");
+//!!!!!!!! had function ax katgol =>dawr dyalha ana kataaficher les persone li katwaf9o conditon dyal anaho select tsawi smya dyal room ila swat xi smya kat aaficher f modal mn ba3d mnin ankliki 3lih radi itmsah mn card au kan filrih mn array +  
     function afficherModel() {
         const toutBtn = document.querySelectorAll(".button");
         toutBtn.forEach((btn)=>{
             btn.addEventListener("click",()=>{
                 const divParent = btn.closest("div");
                 const NomDeSalle =  divParent.children[0].textContent;
-
+                
+                let assgnedEmployees =  unassignedEmployees.filter((persone=> persone.selectrolvalue===NomDeSalle));
             
-                const assgnedEmployees =  unassignedEmployees.filter((persone=> persone.selectrolvalue===NomDeSalle));
-                if(assgnedEmployees){
+                if(assgnedEmployees.length!=0){
+                    const modalromm = document.getElementById("modal-romm")
                     console.log("dkhl")
-                    modalromm.innerHTML = "";
+                    const card = document.createElement("div")
+                    card.className="card-modal-rom";
                 assgnedEmployees.forEach((Workr)=>{
-                    modalromm.insertAdjacentHTML("beforeend",`
-                    <div class = "card-modal-rom" onclick="affichierroom()">
+                    card.innerHTML=`
                     <img src="${Workr.urlvalue}" alt="photo">
                     <h2>${Workr.nomPrenomvalue}</h2>
                     <p>${Workr.selectrolvalue}</p>
-                    </div>
-                    `);
+                    `;
+                    modalromm.append(card);
+                    card.addEventListener("click",()=>{
+                        card.remove();
+                        movedEmployeesModal.push({Workr});
+                        assgnedEmployees = assgnedEmployees.filter(card=>card!=Workr);
+                        divParent.append(card);
+                    });
                 })
-                assgnedEmployees
-
                 const modall = document.getElementById("modal-romm");
                 modall.style.display="block";
                 }
                 else{
+                    
                     alert("aucune worker!!");
                 }
+                
             })
         })
         
     }
     afficherModel()
-    function affichierroom() {
-
-        
-    }
+    // function affichierroom() {
+    //     const cardclick = 
+    // }
     
 
 

@@ -341,7 +341,6 @@ img.bg-img {
 
 .zone-4 {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
@@ -538,9 +537,46 @@ width: 57%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 71%;
+    width: 40%;
     height: fit-content;
     background-color: #818a3b;
     border-radius: 18px;
     border: #231a2b 3px solid;
+}
+@media (max-width:830px) {
+    .gap-1{
+        display: none;
+    }
+    .gap-2{
+        display: none;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        height:80vh;
+        overflow-y: scroll;
+    }
+    /* #reception{
+        height: 100px;
+    } */
+    .zone-1{
+        height: 200px;
+    }
+    .zone-1{
+        height: 200px;
+    }
+    .zone-2{
+        height: 200px;
+    }
+    .zone-3{
+        height: 200px;
+    }
+    .zone-4{
+        height: 200px;
+    }
+    .zone-5{
+        height: 200px;
+    }
+
+    
 }
