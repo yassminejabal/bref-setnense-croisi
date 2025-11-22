@@ -36,7 +36,7 @@ body{
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #8a2be2;
+    background-color: #f7e175;
     color: white;
     cursor: pointer;
     padding: 5px 10px;
@@ -287,7 +287,6 @@ img.bg-img {
 
 .gap-1 {
     grid-area: gap-1;
-
     background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -543,40 +542,166 @@ width: 57%;
     border-radius: 18px;
     border: #231a2b 3px solid;
 }
-@media (max-width:830px) {
-    .gap-1{
-        display: none;
-    }
-    .gap-2{
-        display: none;
-    }
-    .container{
-        display: flex;
-        flex-direction: column;
-        height:80vh;
-        overflow-y: scroll;
-    }
-    /* #reception{
-        height: 100px;
-    } */
-    .zone-1{
-        height: 200px;
-    }
-    .zone-1{
-        height: 200px;
-    }
-    .zone-2{
-        height: 200px;
-    }
-    .zone-3{
-        height: 200px;
-    }
-    .zone-4{
-        height: 200px;
-    }
-    .zone-5{
-        height: 200px;
-    }
+.cards-afficher-romm{
+        margin-left: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: fit-content;
+    background-color: #818a3b;
+    border-radius: 18px;
+    border: #231a2b 3px solid;
+}
+#closModal{
+    color: red;
+    font-size: x-large;
+    width: 10px;
+    height: 10px;
+}
+@media (max-width:1100px) {
 
-    
+    .container {
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+        "zone-1 zone-1 zone-2 zone-3"
+        "zone-4 zone-4 gap-2 gap-2"
+        "zone-4 zone-4 zone-5 zone-6";
+}
+
+.zone-1 {
+    grid-area: zone-1;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174018.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-2 {
+    grid-area: zone-2;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-3 {
+    grid-area: zone-3;
+
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174545.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-4 {
+    grid-area: zone-4;
+
+    background-image: url(/img/Screenshot\ 2025-11-15\ 183108.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.zone-5 {
+    grid-area: zone-5;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174623.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-6 {
+    grid-area: zone-6;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gap-1 {
+    display: none;
+    grid-area: gap-1;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gap-2 {
+    grid-area: gap-2;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 222641.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}   
+}
+@media (max-width:2000px) {
+       .container {
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+        "zone-1 zone-1 zone-2 zone-3"
+        "zone-4 zone-4 gap-2 gap-2"
+        "zone-4 zone-4 zone-5 zone-6";
+}
+
+.zone-1 {
+    grid-area: zone-1;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174018.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-2 {
+    grid-area: zone-2;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-3 {
+    grid-area: zone-3;
+
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174545.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-4 {
+    grid-area: zone-4;
+
+    background-image: url(/img/Screenshot\ 2025-11-15\ 183108.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.zone-5 {
+    grid-area: zone-5;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174623.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.zone-6 {
+    grid-area: zone-6;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gap-1 {
+    display: none;
+    grid-area: gap-1;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gap-2 {
+    grid-area: gap-2;
+    background-image: url(/img/Screenshot\ 2025-11-15\ 222641.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
 }

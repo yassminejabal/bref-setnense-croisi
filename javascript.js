@@ -19,12 +19,13 @@ const select = document.getElementById("loc");
 const inputlabelbtn =  document.getElementById("input-label-btn")
 const companyInputt = document.getElementById("companyInput");
 const modalromm = document.getElementById("modal-romm");
+const closModal = document.getElementById("closModal");
 btnAddWorkerBtn.addEventListener("click", () => {
     formParente.style.display = "block";
     modalromm.style.display="none";
 
 });
-    
+
 
 function plusierexper() {
     const btnexperiencee = document.querySelector(".btn-experience");
@@ -132,6 +133,7 @@ form.addEventListener("submit", (e) => {
 
     const experience =experionce() ;
     unassignedEmployees.push({
+        isWorkr:false,
         id: objId,
         nomPrenomvalue,
         emailvalue,
@@ -161,22 +163,30 @@ form.addEventListener("submit", (e) => {
 
 
 function renderSidebar(){
+
    const sidebar = document.getElementById("sidebar");
     document.querySelectorAll(".card").forEach(ev=>ev.remove());
+    console.log(unassignedEmployees)
     unassignedEmployees.forEach((card)=>{
-        const carde = document.createElement("div");
-        carde.classList.add("card");
-        carde.setAttribute("id",card.id);
-        carde.innerHTML=`
-            <div>
-            <img src="${card.urlvalue}" alt="photo">
-            </div>
-            <h2>${card.nomPrenomvalue}</h2>
-            <p>${card.selectrolvalue}</p>
+        console.log(card);
+        
+        if (card.isWorkr!=true) {
+            console.log(22222221);
             
-            <button class="btn-modal" onclick="modal(${card.id})">Details</button>
-    `
-    sidebar.appendChild(carde);
+                const carde = document.createElement("div");
+                carde.classList.add("card");
+                carde.setAttribute("id",card.id);
+                carde.innerHTML=`
+                    <div>
+                    <img src="${card.urlvalue}" alt="photo">
+                    </div>
+                    <h2>${card.nomPrenomvalue}</h2>
+                    <p>${card.selectrolvalue}</p>
+                    
+                    <button class="btn-modal" onclick="modal(${card.id})">Details</button>
+            `
+            sidebar.appendChild(carde);
+            }
     }
 )
 }
@@ -235,36 +245,57 @@ function imgurl() {
 }
 imgurl()
 
-let movedEmployeesModal = [];
+
 //closeat=>ax kadir =>katmxi l awal parent 3ndo dak l class li 3titiha const div = btn.closest(".grandparent");
-//!!!!!!!! had function ax katgol =>dawr dyalha ana kataaficher les persone li katwaf9o conditon dyal anaho select tsawi smya dyal room ila swat xi smya kat aaficher f modal mn ba3d mnin ankliki 3lih radi itmsah mn card au kan filrih mn array +  
+//!!!!!!!! had function ax katgol =>dawr dyalha ana kataaficher les persone li katwaf9o conditon dyal anaho select tsawi smya dyal room ila swat xi smya kat aaficher f modal mn ba3d mnin ankliki 3lih radi itmsah mn card au kan filrih mn array + 
+ let movedEmployeesModal = [];
     function afficherModel() {
         const toutBtn = document.querySelectorAll(".button");
+        closModal.addEventListener("click",()=>{
+                modalromm.style.display="none";
+                document.querySelectorAll(".card-modal-rom").forEach(ev=>ev.remove());
+                })
         toutBtn.forEach((btn)=>{
             btn.addEventListener("click",()=>{
+                
+
+
                 const divParent = btn.closest("div");
                 const NomDeSalle =  divParent.children[0].textContent;
                 
                 let assgnedEmployees =  unassignedEmployees.filter((persone=> persone.selectrolvalue===NomDeSalle));
-            
+
+                console.log(assgnedEmployees);
+                
                 if(assgnedEmployees.length!=0){
                     const modalromm = document.getElementById("modal-romm")
                     console.log("dkhl")
-                    const card = document.createElement("div")
-                    card.className="card-modal-rom";
+
+                    
                 assgnedEmployees.forEach((Workr)=>{
-                    card.innerHTML=`
-                    <img src="${Workr.urlvalue}" alt="photo">
-                    <h2>${Workr.nomPrenomvalue}</h2>
-                    <p>${Workr.selectrolvalue}</p>
-                    `;
-                    modalromm.append(card);
+                    if(!Workr.isWorkr){
+                        const card = document.createElement("div");
+                        card.id=Workr.id;
+                        card.className="card-modal-rom";
+                        card.innerHTML=`
+                        <img src="${Workr.urlvalue}" alt="photo">
+                        <h2>${Workr.nomPrenomvalue}</h2>
+                        <p>${Workr.selectrolvalue}</p>
+                        `;
+                        modalromm.append(card);
+                   
                     card.addEventListener("click",()=>{
+                        Workr.isWorkr=true;
                         card.remove();
-                        movedEmployeesModal.push({Workr});
-                        assgnedEmployees = assgnedEmployees.filter(card=>card!=Workr);
-                        divParent.append(card);
+
+                        movedEmployeesModal.push(Workr);
+                        assgnedEmployees = assgnedEmployees.filter(cardes=>cardes!=Workr);
+
+                        affichierroom(divParent);
+                        renderSidebar();
                     });
+                     }
+                    
                 })
                 const modall = document.getElementById("modal-romm");
                 modall.style.display="block";
@@ -276,106 +307,20 @@ let movedEmployeesModal = [];
                 
             })
         })
-        
     }
     afficherModel()
-    // function affichierroom() {
-    //     const cardclick = 
-    // }
-    
-
-
-    // let personeconference = unassignedEmployees.filter((persone)=>persone.select==="Salle de conférence");
-    
-    
-    // console.log(personeconference);
-    
-    // personeconference.forEach((persconfirece)=>{
-    //     const modalromm = document.getElementById("modal-romm");
-    //     modalromm.innerHTML+=`
-    //     <div>
-    //         <img src="${persconfirece.urlvalue}" alt="photo">
-    //         </div>
-    //         <h2>${persconfirece.nomPrenomvalue}</h2>
-    //         <p>${persconfirece.selectrolvalue}</p>
-    //     `
-
-    // })
-
-// قواعد الوصول حسب الدور الوظيفي:
-
-// الاستقبال (Réception)
-// ❗ الدخول مسموح فقط لموظفي الاستقبال.
-
-// غرفة الخوادم (Salle des serveurs)
-// ❗ الدخول مسموح فقط لموظفي تكنولوجيا المعلومات (Techniciens IT).
-
-// غرفة الأمن (Salle de sécurité)
-// ❗ الدخول مسموح فقط لوكلاء الأمن (Agents de sécurité).
-
-// المدير (Manager)
-// ✔ يمكنه الدخول إلى جميع المناطق دون استثناء.
-
-// التنظيف (Nettoyage)
-// ✔ يمكنهم الدخول إلى جميع المناطق
-// ❗ باستثناء: غرفة الأرشيف (Salle d’archives).
-
-// الأدوار الأخرى (Autres rôles)
-// ✔ دخول حر
-// ❗ لكن بدون دخول المناطق المقيّدة (مثل غرف الخوادم أو الأمن).
-
-
-
-
-                    // Salle de conférence
-                    // Réception
-                    // Salle des serveurs
-                    // Salle de sécurité
-                    // Salle du staff
-                    // Salle d'archives
-
-//Réception (الاستقبال)
-// → المناسب ليها: Réceptionnistes (موظفي الاستقبال)
-
-// Salle des serveurs (غرفة الخوادم)
-// → المناسب ليها: Techniciens IT (تقنيّي المعلوميات)
-
-// Salle de sécurité (غرفة الأمن)
-// → المناسب ليها: Agents de sécurité (عناصر الأمن)
-
-// Salle de conférence (قاعة الاجتماعات)
-// → المناسب ليها: معظم الأدوار (ماشي منطقة ممنوعة)
-
-// Salle du staff (غرفة الموظفين)
-// → المناسب ليها: جميع الموظفين (مكان عادي)
-
-// Salle d’archives (غرفة الأرشيف)
-// → المناسب ليها: الأدوار العامة
-// ❗ ما عدا التنظيف (Nettoyage ما يدخلش)
-
-// Manager (المدير)
-// → مناسب لجميع الغرف بلا استثناء
-
-// Nettoyage (التنظيف)
-// → مناسب لجميع الغرف
-// ❗ إلّا الأرشيف
-
-// Autres rôles (أدوار أخرى)
-// → يدخلوا الغرف العادية فقط
-// ❗ ما يدخلوا المناطق المقيّدة (الأمن والخوادم…)
-
-// Réception → uniquement les Réceptionnistes
-// Salle des serveurs → uniquement les Techniciens IT
-// Salle de sécurité → uniquement les Agents de sécurité
-// Manager → peut être affecté partout
-// Nettoyage → peut être affecté partout sauf à la Salle d’archives
-// Autres rôles → accès libre sauf aux zones restreintes
-// الاستقبال ← موظفو الاستقبال فقط
-// غرفة الخادم ← فنيو تكنولوجيا المعلومات فقط
-// غرفة الأمن ← مسؤولو الأمن فقط
-// المدير ← إمكانية التعيين في أي مكان
-// التنظيف ← إمكانية التعيين في أي مكان باستثناء غرفة الأرشيف
-// أدوار أخرى ← إمكانية الوصول مفتوحة باستثناء المناطق المحظورة
+    function affichierroom(divParent) {
+       cars = document.createElement("div");
+       cars.className="cards-afficher-romm"
+        movedEmployeesModal.forEach((work)=>{
+            cars.innerHTML=`
+                    <img src="${work.urlvalue}" alt="photo">
+                    <h2>${work.nomPrenomvalue}</h2>
+                    <p>${work.selectrolvalue}</p>
+                    `;
+                    divParent.append(cars);   
+        })
+    }
 
 // let unassgnedEmployees = [
 //     {
