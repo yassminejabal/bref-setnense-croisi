@@ -12,23 +12,24 @@
 <body>
     <div class="containerprincipal">
         <!-- #########################sidebar################################# -->
-        
+
         <button class="btn" onclick="affchesidbar()" id="btn">|||</button>
         <div class="sidebar" id="sidebar">
-                     <div class="btn-add-worker" id="btnaddworker">
+                
+            <div class="btn-add-worker" id="btnaddworker">
                 <button id="btnaddworkerBtn">Add New Worker</button>
             </div>
-           
+
 
         </div>
         <div class="container" style="width:100%;height: 100vh;">
-            
+
             <div class="zone-1">
                 <p>Salle de conférence</p>
-                
+
                 <button id="btn-1" class="button">+</button>
             </div>
-            
+
             <div class="zone-2" id="reception">
                 <p>Réception</p>
                 <button id="btn-2" class="button">+</button>
@@ -37,16 +38,14 @@
             </div>
             <div class="zone-3" id="servers">
                 <p>Salle des serveurs</p>
-                <button id="btn-3" class="button" >+</button>
-                
+                <button id="btn-3" class="button">+</button>
 
-
-
+            
             </div>
             <div class="zone-4" id="security">
                 <p>Salle de sécurité</p>
                 <button id="btn-4" class="button">+</button>
-                
+
 
 
 
@@ -54,7 +53,7 @@
             <div class="zone-5" id="staff">
                 <p>Salle du staff</p>
                 <button id="btn-1" id="btn-5" class="button">+</button>
-                
+
 
 
 
@@ -62,7 +61,7 @@
             <div class="zone-6" id="archives">
                 <p>Salle d'archives</p>
                 <button id="btn-6" class="button">+</button>
-                
+
 
 
 
@@ -74,7 +73,7 @@
         <div class="formulaire" id="formulaire">
             <form class="form" id="form">
                 <div class="none-form-div">
-                <button type="button" class="none-form" id="none-form">X</button>
+                    <button type="button" class="none-form" id="none-form">X</button>
                 </div>
                 <div class="inputlabel">
                     <h2 class="title">entre les information</h2>
@@ -88,11 +87,6 @@
                         <input type="text" class="input" id="input-Email" placeholder="Email" required>
 
                     </div>
-                    <!-- <div class="input-label">
-                        <label for="Role" class="form-label">Role :</label>
-                        <input type="text" class="input" id="input-Role" placeholder="Voter Role" required>
-
-                    </div> -->
                     <div class="input-label">
                         <label for="telephone" class="form-label">telephne :</label>
                         <input type="tel" class="input" id="input-telephone" placeholder="telephone" required>
@@ -103,13 +97,6 @@
                         <input type="url" id="input-url" class="input" placeholder="Votre url" required>
                         <img id="img-url" src="" alt=""></img>
                     </div>
-                    <!-- <div class="input-label">
-                        <label for="Expériences" class="form-label">Expériences :</label>
-                        <input type="text" class="input" id="input-Expériences" placeholder="Votre expériences"
-                            required>
-
-                    </div> -->
-
                     <div class="input-label">
                         <label for="loc" class="form-label">Role :</label>
                         <select id="loc" class="input">
@@ -132,27 +119,28 @@
                         <input type="date" id="experience-end-date" name="experience-end-date"><br> -->
                     </div><br>
                     <div class="input-label">
-                        <button type="button" class ="btn-experience" onclick="experionce()"  class="input" id="input-label-btn">plus experience</button><br><br>
-                        </div>
-                     </div>
-
-
-                    <input type="submit" class="input-button" id="input-button" value="Ajouter">
+                        <button type="button" class="btn-experience" onclick="experionce()" class="input"
+                            id="input-label-btn">plus experience</button><br><br>
+                    </div>
                 </div>
 
 
-
-            </form>
-            <div class="modal-romm" id="modal-romm">
-                <p id="closModal">X</p>
-            </div>
+                <input type="submit" class="input-button" id="input-button" value="Ajouter">
         </div>
-        
 
-        
-            
 
+
+        </form>
+        <div class="modal-romm" id="modal-romm">
+            <p id="closModal">X</p>
         </div>
+    </div>
+
+
+
+
+
+    </div>
     </div>
 
     <script src="javascript.js"></script>
