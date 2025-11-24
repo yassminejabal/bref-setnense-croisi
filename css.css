@@ -245,7 +245,9 @@ img.bg-img {
 
 .zone-1 {
     grid-area: zone-1;
-    background-image: url(/img/Screenshot\ 2025-11-15\ 174018.png);
+   background-image: url("/img/Screenshot 2025-11-15 174018.png");
+    
+    background-blend-mode: overlay;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -255,6 +257,7 @@ img.bg-img {
     background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-blend-mode: overlay;
 }
 
 .zone-3 {
@@ -263,6 +266,7 @@ img.bg-img {
     background-image: url(/img/Screenshot\ 2025-11-15\ 174545.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-blend-mode: overlay;
 }
 
 .zone-4 {
@@ -271,6 +275,7 @@ img.bg-img {
     background-image: url(/img/Screenshot\ 2025-11-15\ 183108.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-blend-mode: overlay;
 
 
 }
@@ -280,12 +285,14 @@ img.bg-img {
     background-image: url(/img/Screenshot\ 2025-11-15\ 174623.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-blend-mode: overlay;
 }
 .zone-6 {
     grid-area: zone-6;
     background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-blend-mode: overlay;
 }
 
 .gap-1 {
@@ -293,6 +300,7 @@ img.bg-img {
     background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-blend-mode: overlay;
 }
 
 .gap-2 {
@@ -300,6 +308,8 @@ img.bg-img {
     background-image: url(/img/Screenshot\ 2025-11-15\ 222641.png);
     background-repeat: no-repeat;
     background-size: cover;
+    /* kadmaj baground color + baground image */
+    background-blend-mode: overlay;
 }
 
 .containerprincipal {
@@ -595,7 +605,7 @@ img.bg-img {
             "zone-4"
             "zone-5"
             "zone-6";
-        height: auto;
+        height: fit-content;
     }
 
     .zone-1,.zone-2,.zone-3,.zone-4,.zone-5,.zone-6 {

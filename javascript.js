@@ -198,7 +198,9 @@ function renderSidebar() {
                     <button class="btn-modal" onclick="modal(${card.id})">Details</button>
             `
             sidebar.appendChild(carde);
+            coleurDesSalle();
         }
+         
     }
     )
 }
@@ -226,7 +228,7 @@ document.body.append(divModal);
 
 function modal(id) {
     unassignedEmployees.forEach((card) => {
-        if (card.id === Number(id)) {
+        if (card.id === id){
             divModal.innerHTML = `
             <p onclick="closmodal()" class="clos">X</p>
             <h4>Nom-Prenom : ${card.nomPrenomvalue}</h4>            
@@ -257,6 +259,7 @@ imgurl()
 
 //closeat=>ax kadir =>katmxi l awal parent 3ndo dak l class li 3titiha const div = btn.closest(".grandparent");
 //!!!!!!!! had function ax katgol =>dawr dyalha ana kataaficher les persone li katwaf9o conditon dyal anaho select tsawi smya dyal room ila swat xi smya kat aaficher f modal mn ba3d mnin ankliki 3lih radi itmsah mn card au kan filrih mn array + 
+
 let movedEmployeesModal = [];
 function afficherModel() {
     const toutBtn = document.querySelectorAll(".button");
@@ -266,17 +269,34 @@ function afficherModel() {
         modalromm.style.display = "none";
         //3lax hadi => bax ila dar clos lmodal au rja3ni mal9ax dok les card;
         document.querySelectorAll(".card-modal-rom").forEach((e) => e.remove());
+        // coleurDesSalle();
     })
+let access = {
+    "Salle de conférence": ["Salle de conférence", "Salle d'archives", "Salle du staff"],
+    "Salle d'archives":["Salle de conférence","Salle du staff","Réception"],
+    "Salle du staff":["Salle de conférence","Salle du staff","Salle de sécurité"],
+    "Salle de sécurité":["Salle de conférence","Réception","Salle du staff"],
+    "Salle des serveurs":["Salle de conférence","Salle des serveurs","Réception"],
+    "Réception":["Réception","Salle de conférence"],
+}
     toutBtn.forEach((btn) => {
         btn.addEventListener("click", () => {
             const divParent = btn.closest("div");
             const NomDeSalle = divParent.children[0].textContent;
-            let assgnedEmployees = unassignedEmployees.filter((persone => persone.selectrolvalue === NomDeSalle));
+            console.log(NomDeSalle);
+            
+            let assgnedEmployees = unassignedEmployees.filter((persone =>access[NomDeSalle].includes(persone.selectrolvalue)));
+            
+           
             if (assgnedEmployees.length != 0) {
                 const modalromm = document.getElementById("modal-romm");
-
+                
                 assgnedEmployees.forEach((Workr) => {
+                    Workr.isWorkr = false;
                     if (!Workr.isWorkr) {
+                        
+                        
+                        console.log("assifbgrhjg,", assgnedEmployees.length);
                         const card = document.createElement("div");
                         card.id = Workr.id;
                         card.className = "card-modal-rom";
@@ -285,7 +305,8 @@ function afficherModel() {
                         <h4>${Workr.nomPrenomvalue}</h4>
                         <p>${Workr.selectrolvalue}</p>
                         `;
-                        modalromm.append(card);
+                        
+                        modalromm.appendChild(card);
 
                         card.addEventListener("click", () => {
                             Workr.isWorkr = true;
@@ -294,6 +315,7 @@ function afficherModel() {
                             assgnedEmployees = assgnedEmployees.filter(cardes => cardes != Workr);
                             affichierroom(divParent);
                             renderSidebar();
+                            coleurDesSalle();
                         });
                     }
                 })
@@ -301,13 +323,13 @@ function afficherModel() {
                 modall.style.display = "block";
             }
             else {
-
                 alert("aucune worker!!");
             }
         })
     })
 }
 afficherModel()
+
 function affichierroom(divParent) {
     let card = document.createElement("div");
     card.className = "cards-afficher-romm";
@@ -325,16 +347,30 @@ function affichierroom(divParent) {
                 card.remove();
                 sidebar.append(card);
                 renderSidebar();
+                coleurDesSalle();
             })
 
 
     })
 }
+    const tousSalle = document.querySelectorAll(".tousleszone");
 
+function coleurDesSalle() {
+    tousSalle.forEach((sale=>{
+        const child = sale.querySelectorAll(".cards-afficher-romm")
+        if(child.length == 0){
+            sale.style.backgroundColor= " rgba(255, 0, 0, 0.4)";   
+            
+        }else{
+               sale.style.backgroundColor="rgba(73, 253, 67, 0.4)";
+        }
+        
+       
 
-
-
-
+    }))
+    
+}
+coleurDesSalle();
 
 
 
