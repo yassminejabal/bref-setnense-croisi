@@ -54,7 +54,7 @@ document.querySelector(".btn-experience").addEventListener("click", () => {
     const toutBtnRimouveExpeience = document.querySelectorAll(".btn-remouve-experience");
     toutBtnRimouveExpeience.forEach((bt) => {
         bt.addEventListener("click", () => {
-            const divParentt = bt.closest("experience-bloc");
+            const divParentt = bt.closest(".experience-bloc");
             divParentt.remove();
 
         })
@@ -68,29 +68,41 @@ function colectexperinces() {
     const regixcompany = /^[A-Za-z0-9\s]+$/;
     const toutexperience = document.querySelectorAll(".experience-bloc");
 
-        for (ex of toutexperience) {
-            const company = ex.querySelector(".company").value.trim();
-            const start = ex.querySelector(".start-date").value.trim();
-            const end = ex.querySelector(".end-date").value.trim();
-            if (!company || !start || !end) {
-                return;
-            }
-            if (!regixcompany.test(company)) {
-                alert("company incorrect");
-                return;
-            }
+    for (ex of toutexperience) {
+        const company = ex.querySelector(".company").value.trim();
+        const start = ex.querySelector(".start-date").value.trim();
+        const end = ex.querySelector(".end-date").value.trim();
+        if (!company || !start || !end) {
+            return;
+        }
+        if (!regixcompany.test(company)) {
+            alert("company incorrect");
+            return;
+        }
 
-            if (new Date(start) > new Date(end) && new Date(start) > Date.now) {
-                alert("hhhhhh");
-                return;
-            }
+        const starDate= new Date(start).getTime();
+        const endDate =new Date(end).getTime();
+        const now= Date.now();
+
+        if (starDate > endDate) {
+            alert("La date de debut ne peut pas etre posterieure a la date de fin!!");
+            return;
+        }
+
+        if (starDate > now) {
+            alert("La date de debut ne peut pas se trouver dans le futur!!");
+            return;
         }
         expirience.push({
             company,
             start,
             end
 
-    });
+        });
+    }
+
+    console.log(expirience);
+
     return expirience;
 }
 
@@ -297,25 +309,25 @@ function afficherModel() {
 }
 afficherModel()
 function affichierroom(divParent) {
-    cars = document.createElement("div");
-    cars.className = "cards-afficher-romm";
+    let card = document.createElement("div");
+    card.className = "cards-afficher-romm";
     movedEmployeesModal.forEach((work) => {
-        cars.innerHTML = `
+        card.innerHTML = `
                     <img src="${work.urlvalue}" alt="photo">
                     <h4>${work.nomPrenomvalue}</h4>
                     <p>${work.selectrolvalue}</p>
                     `;
-        divParent.append(cars);
+        divParent.append(card);
+
+            card.addEventListener("click", () => {
+                movedEmployeesModal = movedEmployeesModal.filter(w => w.id !== work.id);
+                work.isWorkr != true;
+                card.remove();
+                sidebar.append(card);
+                renderSidebar();
+            })
 
 
-        cars.addEventListener("click", () => {
-            movedEmployeesModal = movedEmployeesModal.filter(w => w.id !== cars.id);
-             cars.isWorkr != true;
-            cars.remove();
-            sidebar.append(cars)
-            renderSidebar();
-            
-        })
     })
 }
 

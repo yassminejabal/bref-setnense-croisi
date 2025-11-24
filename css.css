@@ -281,7 +281,6 @@ img.bg-img {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 .zone-6 {
     grid-area: zone-6;
     background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
@@ -306,7 +305,10 @@ img.bg-img {
 .containerprincipal {
     display: flex;
 }
-
+.container{
+    height: 100vh;
+    width: 100%;
+}
 .button {
     width: 50px;
     height: 20px;
@@ -500,7 +502,7 @@ img.bg-img {
 #PlusExpe {
     padding: 3px;
     border-radius: 10px;
-    border-color: 3px solid #231a2b;
+    border: 3px solid #231a2b;
     background-color: #fffbb4;
 }
 
@@ -582,150 +584,82 @@ img.bg-img {
     width: 10px;
     height: 10px;
 }
-
-@media (max-width:1100px) {
+@media (max-width: 600px) {
 
     .container {
-        position: relative;
         display: grid;
-        width: 100%;
         grid-template-areas:
-            "zone-1 zone-1 zone-2 zone-3"
-            "zone-4 zone-4 gap-2 gap-2"
-            "zone-4 zone-4 zone-5 zone-6";
+            "zone-1"
+            "zone-2"
+            "zone-3"
+            "zone-4"
+            "zone-5"
+            "zone-6";
+        height: auto;
     }
 
-    .zone-1 {
-        grid-area: zone-1;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174018.png);
-        background-repeat: no-repeat;
+    .zone-1,.zone-2,.zone-3,.zone-4,.zone-5,.zone-6 {
+        height: 250px;
         background-size: cover;
+        background-position: center;
     }
 
-    .zone-2 {
-        grid-area: zone-2;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .zone-3 {
-        grid-area: zone-3;
-
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174545.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .zone-4 {
-        grid-area: zone-4;
-
-        background-image: url(/img/Screenshot\ 2025-11-15\ 183108.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-
-
-    }
-
-    .zone-5 {
-        grid-area: zone-5;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174623.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .zone-6 {
-        grid-area: zone-6;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .gap-1 {
+    .gap-1,.gap-2 {
         display: none;
-        grid-area: gap-1;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 
-    .gap-2 {
-        grid-area: gap-2;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 222641.png);
-        background-repeat: no-repeat;
-        background-size: cover;
+    .sidebar {
+        width: 250px;
+    }
+
+    .form {
+        width: 90%;
+        height: auto;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    #loc {
+        width: 90%;
     }
 }
+@media (max-width: 1024px) {
 
-@media (max-width:2000px) {
     .container {
-        position: relative;
         display: grid;
-        width: 100%;
         grid-template-areas:
-            "zone-1 zone-1 zone-2 zone-3"
-            "zone-4 zone-4 gap-2 gap-2"
-            "zone-4 zone-4 zone-5 zone-6";
+            "zone-1 zone-1"
+            "zone-2 zone-3"
+            "zone-4 zone-4"
+            "zone-5 zone-6";
+        height: auto;
     }
 
-    .zone-1 {
-        grid-area: zone-1;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174018.png);
-        background-repeat: no-repeat;
+    .zone-1,.zone-2,.zone-3,.zone-4,.zone-5,.zone-6 {
+        height: 350px;
         background-size: cover;
+        background-position: center;
     }
 
-    .zone-2 {
-        grid-area: zone-2;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .zone-3 {
-        grid-area: zone-3;
-
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174545.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .zone-4 {
-        grid-area: zone-4;
-
-        background-image: url(/img/Screenshot\ 2025-11-15\ 183108.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-
-
-    }
-
-    .zone-5 {
-        grid-area: zone-5;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174623.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .zone-6 {
-        grid-area: zone-6;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .gap-1 {
+    .gap-1,.gap-2 {
         display: none;
-        grid-area: gap-1;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 
-    .gap-2 {
-        grid-area: gap-2;
-        background-image: url(/img/Screenshot\ 2025-11-15\ 222641.png);
-        background-repeat: no-repeat;
-        background-size: cover;
+    .sidebar {
+        width: 280px;
+    }
+
+    .form {
+        width: 70%;
+    }
+
+    .input {
+        width: 80%;
+    }
+
+    #loc {
+        width: 80%;
     }
 }
