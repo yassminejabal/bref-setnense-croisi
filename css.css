@@ -245,8 +245,7 @@ img.bg-img {
 
 .zone-1 {
     grid-area: zone-1;
-   background-image: url("/img/Screenshot 2025-11-15 174018.png");
-    
+    background-image: url("img/Screenshot-2025-11-15 174018.png");
     background-blend-mode: overlay;
     background-repeat: no-repeat;
     background-size: cover;
@@ -254,7 +253,7 @@ img.bg-img {
 
 .zone-2 {
     grid-area: zone-2;
-    background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
+    background-image: url("img/Screenshot-2025-11-15 174517.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
@@ -262,8 +261,7 @@ img.bg-img {
 
 .zone-3 {
     grid-area: zone-3;
-
-    background-image: url(/img/Screenshot\ 2025-11-15\ 174545.png);
+    background-image: url("img/Screenshot-2025-11-15 174545.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
@@ -271,25 +269,23 @@ img.bg-img {
 
 .zone-4 {
     grid-area: zone-4;
-
-    background-image: url(/img/Screenshot\ 2025-11-15\ 183108.png);
+    background-image: url("img/Screenshot-2025-11-15 183108.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
-
-
 }
 
 .zone-5 {
     grid-area: zone-5;
-    background-image: url(/img/Screenshot\ 2025-11-15\ 174623.png);
+    background-image: url("img/Screenshot-2025-11-15 174623.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
 }
+
 .zone-6 {
     grid-area: zone-6;
-    background-image: url(/img/Screenshot\ 2025-11-15\ 174517.png);
+    background-image: url("img/Screenshot-2025-11-15 174517.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
@@ -297,7 +293,7 @@ img.bg-img {
 
 .gap-1 {
     grid-area: gap-1;
-    background-image: url(/img/Screenshot\ 2025-11-15\ 174420.png);
+    background-image: url("img/Screenshot-2025-11-15 174420.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: overlay;
@@ -305,12 +301,12 @@ img.bg-img {
 
 .gap-2 {
     grid-area: gap-2;
-    background-image: url(/img/Screenshot\ 2025-11-15\ 222641.png);
+    background-image: url("img/Screenshot-2025-11-15 222641.png");
     background-repeat: no-repeat;
     background-size: cover;
-    /* kadmaj baground color + baground image */
     background-blend-mode: overlay;
 }
+
 
 .containerprincipal {
     display: flex;
