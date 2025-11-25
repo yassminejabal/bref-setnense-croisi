@@ -515,7 +515,7 @@ img.bg-img {
 #plusier-experience {
     /* align-content: center; */
     text-align: center;
-    display: none;
+    display: block;
     /* display: flex; */
     /* flex-direction: column; */
     /* justify-content: center; */

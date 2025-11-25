@@ -1,7 +1,6 @@
 let unassignedEmployees = [];
 let expirience = [];
-// let rom1 = [];
-// let assgnedEmployees=[];
+
 
 const form = document.getElementById("form");
 const inputbutton = document.getElementById("input-button");
@@ -29,7 +28,6 @@ btnAddWorkerBtn.addEventListener("click", () => {
 
 function plusierexper() {
     const btnexperiencee = document.querySelector(".btn-experience");
-
     btnexperiencee.addEventListener("click", () => {
         plusierexperience.style.display = "block";
     })
@@ -64,66 +62,55 @@ document.querySelector(".btn-experience").addEventListener("click", () => {
 });
 
 
-
 function colectexperinces() {
     const regixcompany = /^[A-Za-z0-9\s]+$/;
     const toutexperience = document.querySelectorAll(".experience-bloc");
-
-        for (ex of toutexperience) {
-            const company = ex.querySelector(".company").value.trim();
-            const start = ex.querySelector(".start-date").value.trim();
-            const end = ex.querySelector(".end-date").value.trim();
-            if (!company || !start || !end) {
-                return;
-            }
-            if (!regixcompany.test(company)) {
-                alert("company incorrect");
-                return;
-            }
     for (ex of toutexperience) {
         const company = ex.querySelector(".company").value.trim();
         const start = ex.querySelector(".start-date").value.trim();
         const end = ex.querySelector(".end-date").value.trim();
-        if (!company || !start || !end) {
-            return;
-        }
+        const starDate = new Date(start).getTime();
+        const endDate = new Date(end).getTime();
+        const now = Date.now();
+
+        // if (!company || !start || !end) {
+        //     return;
+        // }
         if (!regixcompany.test(company)) {
             alert("company incorrect");
             return;
         }
 
-            if (new Date(start) > new Date(end) && new Date(start) > Date.now) {
-                alert("hhhhhh");
+            if (!company || !start || !end) {
                 return;
             }
-        const starDate= new Date(start).getTime();
-        const endDate =new Date(end).getTime();
-        const now= Date.now();
 
-        if (starDate > endDate) {
-            alert("La date de debut ne peut pas etre posterieure a la date de fin!!");
-            return;
-        }
+            if (new Date(start) > new Date(end) && new Date(start) > Date.now) {
+                alert("date incorect");
+                return;
+            }
 
-        if (starDate > now) {
-            alert("La date de debut ne peut pas se trouver dans le futur!!");
-            return;
-        }
-        expirience.push({
-            company,
-            start,
-            end
 
-    });
-        };
+            if (starDate > endDate) {
+                alert("La date de debut  et supireieur a la date defin!!");
+                return;
+            }
+
+            if (starDate > now) {
+                alert("La date de debut et supieur et supirieur a la date de se jour");
+                return;
+            }
+            expirience.push({
+                company,
+                start,
+                end
+            });
     }
 
     console.log(expirience);
 
     return expirience;
 }
-
-
 
 function affchesidbar() {
     sidebar.classList.toggle("active");
@@ -179,7 +166,6 @@ form.addEventListener("submit", (e) => {
     });
     objId++
         ;
-    console.log(unassignedEmployees);
     plusierexperience.innerHTML = "";
     localStorage.setItem('objId', JSON.stringify(objId));
     form.reset();
@@ -194,7 +180,7 @@ noneform.addEventListener("click", () => {
 });
 
 
-
+////////////////////////////////////////////////////////function d'affichage a sidebar///////////////////////////////////////////////////
 function renderSidebar() {
     const sidebar = document.getElementById("sidebar");
     document.querySelectorAll(".card").forEach(ev => ev.remove());
@@ -237,34 +223,34 @@ function renderSidebar() {
 
 
 const btnmodal = document.getElementById("btn-modal");
+/////////////////////////////////////////////////////////////////daitls///////////////////////////////////////////////////////////////
+
 const divModal = document.createElement("div");
 divModal.classList.add("divModal");
 document.body.append(divModal);
 
 function modal(id) {
     unassignedEmployees.forEach((card) => {
-        if (card.id === Number(id)) {
+        if (card.id === id) {
             divModal.innerHTML = `
             <p onclick="closmodal()" class="clos">X</p>
             <h4>Nom-Prenom : ${card.nomPrenomvalue}</h4>            
             <p>Email : ${card.emailvalue}</p>
             <p>Telephone : ${card.telephonevalue}</p>
             <p>ROle : ${card.selectrolvalue}</p>
+            
     `
         }
         divModal.style.display = "block";
     })
-
 }
 function closmodal() {
-    console.log("enter");
     divModal.style.display = "none";
 }
-
+//////////////////////////////////////////////////image url/////////////////////////////////////////
 function imgurl() {
     const inputurl = document.getElementById("input-url");
     url.addEventListener("input", () => {
-        console.log(10);
         document.getElementById("img-url").src = inputurl.value;
     })
 
@@ -272,35 +258,32 @@ function imgurl() {
 imgurl()
 
 
-//closeat=>ax kadir =>katmxi l awal parent 3ndo dak l class li 3titiha const div = btn.closest(".grandparent");
-//!!!!!!!! had function ax katgol =>dawr dyalha ana kataaficher les persone li katwaf9o conditon dyal anaho select tsawi smya dyal room ila swat xi smya kat aaficher f modal mn ba3d mnin ankliki 3lih radi itmsah mn card au kan filrih mn array + 
+////////////////////////////////hadi dyal modal  mnin ka nkliki f btn dyal room//////////////////////////
 let movedEmployeesModal = [];
 function afficherModel() {
     const toutBtn = document.querySelectorAll(".button");
     //hadi dyal X dyal modal mnin tbri thyad modal
     closModal.addEventListener("click", () => {
-
         modalromm.style.display = "none";
         //3lax hadi => bax ila dar clos lmodal au rja3ni mal9ax dok les card;
         document.querySelectorAll(".card-modal-rom").forEach((e) => e.remove());
     });
     const access = {
-        "Salle de conférence": ["Salle de conférence","Réception","Salle des serveurs"],
-        "Réception": ["Salle de conférence","Réception","Salle du staff"],
-        "Salle des serveurs": ["Salle des serveurs","Salle de sécurité","Salle de conférence"],
-        "Salle de sécurité": ["Salle de sécurité","Salle d'archives","Salle du staff"],
-        "Salle du staff": ["Salle du staff","Salle des serveurs","Salle d'archives"],
-        "Salle d'archives": ["Salle d'archives","Salle des serveurs","Réception"]
+        "Salle de conférence": ["Salle de conférence", "Réception", "Salle des serveurs"],
+        "Réception": ["Salle de conférence", "Réception"],
+        "Salle des serveurs": ["Salle des serveurs", "Salle de sécurité", "Salle de conférence"],
+        "Salle de sécurité": ["Salle de sécurité", "Salle d'archives", "Salle du staff"],
+        "Salle du staff": ["Salle du staff", "Salle des serveurs", "Salle d'archives", "Réception", "Salle de sécurité", "Salle de conférence"],
+        "Salle d'archives": ["Salle d'archives", "Salle des serveurs", "Réception", "Salle de conférence"]
     }
     toutBtn.forEach((btn) => {
         btn.addEventListener("click", () => {
             const divParent = btn.closest("div");
             const NomDeSalle = divParent.children[0].textContent;
-            
+            //hna knfinfiltri 3la hsab role au 3la hsab name f nafse alwa9t
             let assgnedEmployees = unassignedEmployees.filter((persone => access[NomDeSalle].includes(persone.selectrolvalue)));
             if (assgnedEmployees.length != 0) {
                 const modalromm = document.getElementById("modal-romm");
-
                 assgnedEmployees.forEach((Workr) => {
                     if (!Workr.isWorkr) {
                         const card = document.createElement("div");
@@ -310,14 +293,16 @@ function afficherModel() {
                         <img src="${Workr.urlvalue}" alt="photo">
                         <h4>${Workr.nomPrenomvalue}</h4>
                         <p>${Workr.selectrolvalue}</p>
+                        
                         `;
+                        //################################//afichage dans le modal//@@@@@@@@@@@@@@
                         modalromm.append(card);
-
                         card.addEventListener("click", () => {
                             Workr.isWorkr = true;
                             card.remove();
                             movedEmployeesModal.push(Workr);
                             assgnedEmployees = assgnedEmployees.filter(cardes => cardes != Workr);
+                            //hadi fonction dyal affichage f room//
                             affichierroom(divParent);
                             renderSidebar();
                         });
@@ -334,13 +319,14 @@ function afficherModel() {
     })
 }
 afficherModel()
+//affichage dans room
 function affichierroom(divParent) {
     cars = document.createElement("div");
     cars.className = "cards-afficher-romm";
     let card = document.createElement("div");
     card.className = "cards-afficher-romm";
     movedEmployeesModal.forEach((work) => {
-        
+
         card.innerHTML = `
                     <img src="${work.urlvalue}" alt="photo">
                     <h4>${work.nomPrenomvalue}</h4>
@@ -348,71 +334,40 @@ function affichierroom(divParent) {
                     `;
 
         divParent.append(card);
-            card.addEventListener("click", () => {
-                movedEmployeesModal = movedEmployeesModal.filter(w => w.id !== work.id);
-                work.isWorkr != true;
-                card.remove();
-                sidebar.append(card);
-                renderSidebar();
-            })
+        card.addEventListener("click", () => {
+            movedEmployeesModal = movedEmployeesModal.filter(w => w.id !== work.id);
+            work.isWorkr != true;
+            card.remove();
+            sidebar.append(card);
+            renderSidebar();
+            coleurDesSalle();
 
+        })
+        //remouve dans room et afficher dans sidbar//
         cars.addEventListener("click", () => {
             movedEmployeesModal = movedEmployeesModal.filter(w => w.id !== cars.id);
-             cars.isWorkr != true;
+            cars.isWorkr != true;
             cars.remove();
             sidebar.append(cars)
             renderSidebar();
+
         })
+
     })
+    coleurDesSalle();
+
 }
-    const tousSalle = document.querySelectorAll(".tousleszone");
+const tousSalle = document.querySelectorAll(".tousleszone");
 function coleurDesSalle() {
-    tousSalle.forEach((sale=>{
+    tousSalle.forEach((sale => {
         const child = sale.querySelectorAll(".cards-afficher-romm")
-        if(child.length == 0){
-            sale.style.backgroundColor= " rgba(255, 0, 0, 0.4)";   
-            
-        }else{
-               sale.style.backgroundColor="rgba(73, 253, 67, 0.4)";
+        if (child.length == 0) {
+            sale.style.backgroundColor = " rgba(255, 0, 0, 0.4)";
+
+        } else {
+            sale.style.backgroundColor = "rgba(73, 253, 67, 0.4)";
         }
     }))
-    
+
 }
 coleurDesSalle();
-
-
-
-
-
-
-
-
-// let unassgnedEmployees = [
-//     {
-//         name: "efzef",
-
-//     }
-// ]
-
-
-// let assgnedEmployees = {
-//     room1: [
-//         {
-//             name: "efzef",
-
-//         },
-//         {
-//             name: "efzef",
-
-//         }
-//     ],
-
-// }
-
-
-
-
-
-
-
-
